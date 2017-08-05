@@ -498,6 +498,9 @@ public:
   Vector<std::string> write_string_vector(const size_t & = 5) const;
 
   Matrix<T> to_matrix(const size_t &, const size_t &) const;
+
+
+  Vector<long> calculate_round() const;
 };
 
 // CONSTRUCTORS
@@ -6142,6 +6145,19 @@ Matrix<T> Vector<T>::to_matrix(const size_t &rows_number,
 
   return (matrix);
 }
+
+
+template <class T>
+Vector<long> Vector<T>::calculate_round() const {
+    Vector<long> result;
+    result.reserve(this->size());
+    for (const auto& value: *this) {
+        result.emplace_back(std::round(value));
+    }
+    return result;
+}
+
+
 
 // Vector input operator
 
